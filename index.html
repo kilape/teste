@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste</title>
+</head>
+<body style="text-align: center; margin-top: 15%;">
+    <button onclick="index_notification()">
+        Clique para a notificação aparecer
+    </button>
+    <script>
+        function index_notification(){
+            if("Notification" in window){
+                if(Notification.permission == "granted"){
+                    new Notification("Teste",{
+                        body: "Teste completado com sucesso!",
+                    });
+                }else{
+                    Notification.requestPermission().then(function (permission){
+                        if(Notification.permission == "granted"){
+                            new Notification("Concebido",{
+                                body: "Tetse concebido!",
+                            });
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
